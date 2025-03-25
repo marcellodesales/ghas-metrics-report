@@ -8,7 +8,7 @@
 ####
 services:
   action:
-    image: vionix/ghas-metrics-report
+    image: vionix.docker.artifactory.viasat.com/platform/build/sec/ghas-metrics-report
     build:
       context: . 
       #target: os-deps
