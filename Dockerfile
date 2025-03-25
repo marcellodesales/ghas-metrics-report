@@ -17,4 +17,6 @@ COPY . .
 
 RUN npm run build
 
-CMD ["node", "dist/index.js"]
+VOLUME /action/dist
+
+ENTRYPOINT ["node", "dist/index.js"]

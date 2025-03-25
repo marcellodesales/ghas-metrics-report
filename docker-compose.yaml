@@ -1,7 +1,10 @@
 ####
 #### Attention. First, make a copy of .env-sample as .env to run
 #### Fill it out locally so you know
-#### $ docker compose up
+#### $ docker compose up --build
+####
+#### * Copy the built dist/index.js with 
+#####  docker run -ti -v $(pwd):$(pwd) -w $(pwd) vionix/ghas-metrics-report cp /app/dist/index.js dist/index.js
 ####
 services:
   action:
