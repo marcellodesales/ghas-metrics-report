@@ -1,6 +1,7 @@
 import * as core from "@actions/core";
 import { DependancyAlert } from "../types/common/main";
 import { MyOctokit } from "./MyOctokit";
+import {formatScanError} from "../utils/Utils";
 
 export const DependabotAlerts = async (
   owner: string,
@@ -22,7 +23,8 @@ export const DependabotAlerts = async (
     );
     res = iterator as DependancyAlert[];
   } catch (error) {
-    core.setFailed("There was an error. Please check the logs" + error);
+    const errorMessge = formatScanError("dependabot", owner, repository, error)
+    core.setFailed(errorMessge);
   }
   return res;
 };

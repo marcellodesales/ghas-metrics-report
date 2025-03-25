@@ -1,3 +1,4 @@
+
 export function secondsToReadable(seconds: number): string {
   seconds = Number(seconds);
   const d = Math.floor(seconds / (3600 * 24));
@@ -14,4 +15,13 @@ export function secondsToReadable(seconds: number): string {
 
 export function createUrlLink(url: string | null, text: string): string {
   return `<a target=_blank href="${url}">${text}</a>`;
+}
+
+export function formatScanError(feature, org, repo, error: string ):string {
+  const serverUrl = process.env.GITHUB_API_URL.replace("/api", "").replace("/v3", "")
+  let githubObject = `${serverUrl}/${org}`
+  if (repo && repo.length > 0) {
+    githubObject = `${githubObject}/${repo}`
+  }
+  return `There was an error fetching '${feature}' from '${githubObject}'. This feature might be disabled at ${githubObject}/security: ${error}`;
 }

@@ -1,5 +1,6 @@
 import * as core from "@actions/core";
 import { MyOctokit } from "./MyOctokit";
+import {formatScanError} from "../utils/Utils";
 
 export const GetCommitDate = async (
   owner: string,
@@ -30,7 +31,8 @@ export const GetCommitDate = async (
       }
     }
   } catch (error) {
-    core.setFailed("There was an error. Please check the logs" + error);
+    const errorMessge = formatScanError("commits", owner, repository, error)
+    core.setFailed(errorMessge);
   }
 
   return alerts;

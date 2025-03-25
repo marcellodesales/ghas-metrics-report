@@ -1,6 +1,7 @@
 import * as core from "@actions/core";
 import { CodeScanningAlert } from "../types/common/main";
 import { MyOctokit } from "./MyOctokit";
+import { formatScanError } from "../utils/Utils"
 
 export const CodeScanningAlerts = async (
   owner: string,
@@ -21,8 +22,10 @@ export const CodeScanningAlerts = async (
       },
     );
     res = iterator as CodeScanningAlert[];
+
   } catch (error) {
-    core.setFailed("There was an error. Please check the logs" + error);
+    const errorMessge = formatScanError("code-scanning", owner, repository, error)
+    core.warning(errorMessge);
   }
   return res;
 };

@@ -4,6 +4,7 @@ import {
   SecretScanningAlert,
   SecretScanningLocation,
 } from "../types/common/main";
+import {formatScanError} from "../utils/Utils";
 
 export const SecretScanningAlerts = async (
   owner: string,
@@ -39,7 +40,8 @@ export const SecretScanningAlerts = async (
       );
     }
   } catch (error) {
-    core.setFailed("There was an error. Please check the logs" + error);
+      const errorMessge = formatScanError("secret-scanning", owner, repository, error)
+      core.setFailed(errorMessge);
   }
   return res;
 };

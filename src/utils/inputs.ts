@@ -45,13 +45,13 @@ export const inputs = async (): Promise<inputsReturned> => {
       .toLowerCase()
       .split(",", 3) as outputFormat[];
 
-    core.debug(`The following base url was inputted: ${baseUrl}`);
-    core.debug(`The following team was inputted: ${team}`);
-    core.debug(`The following repo was inputted: ${repo}`);
-    core.debug(`The following org was inputted: ${org}`);
-    core.debug(`The following features was inputted: ${features}`);
-    core.debug(`The following frequency was inputted: ${frequency}`);
-    core.debug(`The following output was inputted: ${outputFormat}`);
+    core.debug(`The following base url was provided: ${baseUrl}`);
+    core.debug(`The following team was provided: ${team}`);
+    core.debug(`The following repo was provided: ${repo}`);
+    core.debug(`The following org was provided: ${org}`);
+    core.debug(`The following features was provided: ${features}`);
+    core.debug(`The following frequency was provided: ${frequency}`);
+    core.debug(`The following output was provided: ${outputFormat}`);
 
     return {
       team,
@@ -61,6 +61,7 @@ export const inputs = async (): Promise<inputsReturned> => {
       frequency,
       outputFormat,
     };
+
   } catch (e: unknown) {
     if (e instanceof Error) {
       core.debug(`${e}`);
