@@ -10,7 +10,7 @@
     "lint:check": "eslint .",
     "lint:write": "eslint --fix .",
     "test": "jest --coverage",
-    "prepare": "husky install",
+    "pretest": "husky install",
     "start": "yarn run build && node ./dist/index.js",
     "local": "yarn run build && act --job regression-local-pat --env-file ./.env --secret-file my.secrets"
   },
