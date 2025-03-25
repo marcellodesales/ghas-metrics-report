@@ -1,4 +1,4 @@
-FROM dockerhub.docker.artifactory.viasat.com/node:20-alpine AS os-deps
+FROM node:20-alpine AS os-deps
 
 WORKDIR /app
 
